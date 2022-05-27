@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--In this Kata, you need to create an calculator out of an array input.
+
+Example: evaluate(['10', '+', '20', '*','3']) // Returns 70
+
+For an case where expretion is not having the correct or valid input then it should return undefined.
+
+evaluate(['10', '+', '20', '*','3', '*']) // Returns undefined
+
+evaluate(['+', '20', '*','3']) // Returns undefined
+
+evaluate(['10', '20', '*','3']) // Returns undefined
+
+Supported operations
+
+Only plus(+) and multiply(*) binary operators Cosider priority of plus and multiply. 10 + 20 * 3 should return 70 not 90 i.e 10 + (20 * 3) not (10 + 20) * 3
+Note: You could not able to use the eval function for this.-->
+
+<!--https://www.codewars.com/kata/array-calculator-->
+<script>
+    function evaluate(arr) {
+        let operators = ['*', '/', '+', '-'];
+        let result = 0;
+        if (arr.length % 2 === 0) {
+            return undefined;
+        }
+        for (let x of operators) {
+            while (arr.includes(x)) {
+                let indexOfOperation = arr.indexOf(x);
+                switch (x) {
+                    case '*':
+                        result = Number(arr[indexOfOperation - 1]) * Number(arr[indexOfOperation + 1]);
+                        break;
+                    case '/':
+                        result = Number(arr[indexOfOperation - 1]) / Number(arr[indexOfOperation + 1]);
+                        break;
+                    case '+':
+                        result = Number(arr[indexOfOperation - 1]) + Number(arr[indexOfOperation + 1]);
+                        break;
+                    case '-':
+                        result = Number(arr[indexOfOperation - 1]) - Number(arr[indexOfOperation + 1]);
+                        break;
+                }
+                arr.splice(indexOfOperation - 1, 3);
+                arr.splice(indexOfOperation - 1, 0, result);
+            }
+        }
+        console.log(arr.length);
+        return result;
+    }
+
+    console.log(evaluate(['10', '*', '20', '*', '3', '/', '2']));
+</script>
+</body>
+</html>

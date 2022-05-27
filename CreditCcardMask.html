@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  /*  The slice() method extracts a section of a string and returns it as a new string, without modifying the original string.*/
+
+    function maskify(cc) {
+        //return cc.slice(0, -4).replace(/./g, '#')+ cc.slice(-4);
+        return cc.slice(0, -4).replace(/./g, '#')+ cc.slice(-4);
+    }
+
+    maskify('4556364607935616');
+    console.log(maskify('4556364607935616'))
+</script>
+</body>
+</html>
